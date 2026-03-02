@@ -1,15 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth"; // Tambahkan ini
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDiTqLeDYwp99OexM8o7DW__7Kqtzeb-vA",
-  authDomain: "koys-92fd5.firebaseapp.com",
-  projectId: "koys-92fd5",
-  storageBucket: "koys-92fd5.firebasestorage.app",
-  messagingSenderId: "60255465436",
-  appId: "1:60255465436:web:7805540a6f475a69d2a919",
-  measurementId: "G-2E8Q83WTQB"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
+
+// Ekspor db dan auth agar bisa dipakai di Login.tsx
 export const db = getFirestore(app);
+export const auth = getAuth(app); // Tambahkan ini
